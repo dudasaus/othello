@@ -8,6 +8,7 @@ using namespace std;
 class Board {
 private:
     int size;
+    int emptySpaces;
     vector<vector<Tile> > tiles;
     
 public:
@@ -23,5 +24,16 @@ public:
     void print(ostream& os);
     void printWithCoords(ostream& os);
     
+    // check is the board is full
+    bool isFull();
+    
+    // Check directions to help valid moves
+    bool checkDirection(int r, int c, int player, int rChange, int cChange);
+    bool checkAllDirections(int r, int c, int player);
+    
+    // check for a valid move 
     bool checkValidMove(int r, int c, int player);
+    
+    // play a piece
+    void playPiece(int r, int c, int player);
 };

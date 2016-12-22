@@ -8,7 +8,6 @@ int main() {
     
     Game game;
     game.startGame();
-    game.takeTurn();
     
     return 0;
 }

@@ -31,6 +31,11 @@ public:
     bool isEmpty() {
         return (occupant == EMPTY);
     }
+
+    // flip 
+    void flip() {
+        occupant = (occupant == WHITE) ? BLACK : WHITE;
+    }
     
     // Getters
     int getOccupant() {

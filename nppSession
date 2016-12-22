@@ -1,0 +1,13 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="2">
+            <File firstVisibleLine="3" xOffset="0" scrollWidth="583" startPos="673" endPos="673" selMode="0" lang="C++" encoding="-1" filename="C:\Users\Austin\Cygwin\home\Austin\Personal\othello\Tile.h" backupFilePath="" originalFileLastModifTimestamp="1482387019" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="836" startPos="635" endPos="635" selMode="0" lang="C++" encoding="-1" filename="C:\Users\Austin\Cygwin\home\Austin\Personal\othello\Board.h" backupFilePath="" originalFileLastModifTimestamp="1482389488" />
+            <File firstVisibleLine="62" xOffset="0" scrollWidth="858" startPos="1762" endPos="1762" selMode="0" lang="C++" encoding="-1" filename="C:\Users\Austin\Cygwin\home\Austin\Personal\othello\Board.cpp" backupFilePath="" originalFileLastModifTimestamp="1482389941" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="352" startPos="121" endPos="121" selMode="0" lang="C++" encoding="-1" filename="C:\Users\Austin\Cygwin\home\Austin\Personal\othello\main.cpp" backupFilePath="" originalFileLastModifTimestamp="1482388147" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="473" startPos="378" endPos="378" selMode="0" lang="C++" encoding="-1" filename="C:\Users\Austin\Cygwin\home\Austin\Personal\othello\Game.h" backupFilePath="" originalFileLastModifTimestamp="1482388034" />
+            <File firstVisibleLine="39" xOffset="0" scrollWidth="1177" startPos="2040" endPos="2040" selMode="0" lang="C++" encoding="-1" filename="C:\Users\Austin\Cygwin\home\Austin\Personal\othello\Game.cpp" backupFilePath="" originalFileLastModifTimestamp="1482388396" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

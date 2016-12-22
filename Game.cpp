@@ -1,6 +1,7 @@
 // Austin Dudas
 
 #include "Game.h"
+#include <string>
 
 using namespace std;
 
@@ -8,6 +9,9 @@ using namespace std;
 void Game::startGame() {
     os << "Starting a new game of Othello\n";
     os << Tile::toChar(currentPlayer) << " goes first\n\n";
+    while (!board.isFull()) {
+        takeTurn();
+    }
 }
 
 void Game::takeTurn() {
@@ -15,7 +19,22 @@ void Game::takeTurn() {
     board.printWithCoords(os);
     os << '\n' << Tile::toChar(currentPlayer) 
     << "'s turn - Enter a position in [LETTER][NUMBER] format\n";
-    getPositionInput();
+    // Get the input 
+    Position pos = getPositionInput();
+    // Play the piece
+    board.playPiece(pos.row, pos.col, currentPlayer);
+    // Change players
+    changePlayers();
+}
+
+// change players 
+void Game::changePlayers() {
+    if (currentPlayer == Tile::BLACK) {
+        currentPlayer = Tile::WHITE;
+    }
+    else {
+        currentPlayer = Tile::BLACK;
+    }
 }
 
 // get position input 
@@ -55,7 +74,9 @@ Position Game::getPositionInput() {
                 os << "It's invalid for you to play there\n";
         }
     }
-    
-    Position pos = {row, col};
+    os << '\n';
+    Position pos;// = { row, col };
+    pos.row = row;
+    pos.col = col;
     return pos;   
 }

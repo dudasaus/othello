@@ -22,6 +22,9 @@ public:
     // do a turn
     void takeTurn();
     
+    // change players 
+    void changePlayers();
+    
     // get Position intput
     Position getPositionInput();
     
