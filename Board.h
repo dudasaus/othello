@@ -36,4 +36,9 @@ public:
     
     // play a piece
     void playPiece(int r, int c, int player);
+
+    // flip directions when playing a piece
+    void flipDirection(int r, int c, int player, int rChange, int cChange);
+    void flipAllDirections(int r, int c, int player);
+
 };

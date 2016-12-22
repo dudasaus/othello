@@ -64,6 +64,7 @@ bool Board::checkValidMove(int r, int c, int player) {
 // Play a piece 
 void Board::playPiece(int r, int c, int player) {
     tiles[r][c].setOccupant(player);
+    flipAllDirections(r, c, player);
     --emptySpaces;
 }
 
@@ -116,4 +117,33 @@ bool Board::checkAllDirections(int r, int c, int player) {
         checkDirection(r, c, player, -1, 0) ||
         checkDirection(r, c, player, -1, 1)
     );
+}
+
+// flip all the tiles in a direction
+void Board::flipDirection(int r, int c, int player, int rChange, int cChange) {
+    // check the direction to avoid wasting time and errors
+    if (checkDirection(r, c, player, rChange, cChange)) {
+        // Go that direction 
+        for (int i = 1; i < size; ++i) {
+            Tile& t = tiles[r + i * rChange][c + i * cChange];
+            // Flip if necessary
+            if (t.getOccupant() != player)
+                t.flip();
+            // return if flips are done
+            else
+                return;
+        }
+    }
+}
+
+// flip all the tiles in every direction where possible
+void Board::flipAllDirections(int r, int c, int player) {
+    flipDirection(r, c, player, 0, 1);
+    flipDirection(r, c, player, 1, 1);
+    flipDirection(r, c, player, 1, 0);
+    flipDirection(r, c, player, 1, -1);
+    flipDirection(r, c, player, 0, -1);
+    flipDirection(r, c, player, -1, -1);
+    flipDirection(r, c, player, -1, 0);
+    flipDirection(r, c, player, -1, 1);
 }
