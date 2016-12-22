@@ -58,6 +58,7 @@ bool Board::isFull() {
 
 // Check for valid move 
 bool Board::checkValidMove(int r, int c, int player) {
+    // TODO: do something for the case where you can't flip any tiles (ew)
     return (tiles[r][c].isEmpty() && checkAllDirections(r, c, player));
 }
 
@@ -80,9 +81,6 @@ int rChange, int cChange) {
     // Check adjacent tile 
     int occ = tiles[r + rChange][c + cChange].getOccupant();
     if (occ == player || occ == Tile::EMPTY) return false;
-    
-    // get the other player 
-    int other = (player == Tile::WHITE) ? Tile::BLACK : Tile::WHITE;
     
     // Continue checking down the line 
     for (int i = 2; i < size; ++i) {

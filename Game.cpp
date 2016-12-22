@@ -12,6 +12,7 @@ void Game::startGame() {
     while (!board.isFull()) {
         takeTurn();
     }
+    // TODO: show final scores
 }
 
 void Game::takeTurn() {
