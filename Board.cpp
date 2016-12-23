@@ -58,8 +58,15 @@ bool Board::isFull() {
 
 // Check for valid move 
 bool Board::checkValidMove(int r, int c, int player) {
-    // TODO: do something for the case where you can't flip any tiles (ew)
-    return (tiles[r][c].isEmpty() && checkAllDirections(r, c, player));
+    // Move is normally valid
+    if (tiles[r][c].isEmpty() && checkAllDirections(r, c, player))
+        return true;
+    // Move is valid when no flips are available
+    else if (noOtherValidMoves(r, c, player)) {
+        return true;
+    }
+    // Move isn't valid
+    return false;
 }
 
 // Play a piece 
@@ -72,7 +79,6 @@ void Board::playPiece(int r, int c, int player) {
 // Check a direction for flippable tiles 
 bool Board::checkDirection(int r, int c, int player,
 int rChange, int cChange) {
-    //cerr << "Checking " << rChange << ' ' << cChange << '\n';
     
     // Check adjacent in bounds 
     if (r + rChange >= size || r + rChange < 0) return false;
@@ -144,4 +150,32 @@ void Board::flipAllDirections(int r, int c, int player) {
     flipDirection(r, c, player, -1, -1);
     flipDirection(r, c, player, -1, 0);
     flipDirection(r, c, player, -1, 1);
+}
+
+// for the case where you can't flip any tiles anywhere
+bool Board::noOtherValidMoves(int r, int c, int player) {
+
+    if (!adjacentOccupiedTileExists(r, c)) {
+        return false;
+    }
+
+    // check the full board for other valid moves (costly AF)
+    for (int r = 0; r < size; ++r) {
+        for (int c = 0; c < size; ++c) {
+            if (tiles[r][c].isEmpty() && !checkAllDirections(r, c, player)) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+// TODO
+bool Board::adjacentOccupiedTileExists(int r, int c) {
+    /*if (r + 1 < size) {
+
+    }
+    */
+    return true;
 }

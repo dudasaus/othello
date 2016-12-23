@@ -41,4 +41,10 @@ public:
     void flipDirection(int r, int c, int player, int rChange, int cChange);
     void flipAllDirections(int r, int c, int player);
 
+    // for the case where you can't flip any tiles
+    bool noOtherValidMoves(int r, int c, int player);
+    
+    // checks to see if any adjacent occupied tiles exists
+    bool adjacentOccupiedTileExists(int r, int c);
+
 };
