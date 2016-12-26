@@ -49,6 +49,14 @@ public:
 };
 
 inline ostream& operator<<(ostream& os, Tile& tile) {
-    os << tile.toChar();
+    
+    const string output[] = {
+        "\x1b[42m\x1b[90m*\x1b[0m",
+        "\x1b[42m\x1b[30mO\x1b[0m",
+        "\x1b[42m\x1b[97mO\x1b[0m"
+    };
+    
+    os << output[tile.getOccupant()];
+    
     return os;
 }

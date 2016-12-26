@@ -7,12 +7,32 @@ using namespace std;
 
 // Set up and start the game 
 void Game::startGame() {
+    // Start message
     os << "Starting a new game of Othello\n";
     os << Tile::toChar(currentPlayer) << " goes first\n\n";
+
+    // Play all the turns
     while (!board.isFull()) {
         takeTurn();
     }
-    // TODO: show final scores
+    
+    // Get final scores 
+    int blackTiles = board.countTiles(Tile::BLACK);
+    int whiteTiles = board.getSize() - blackTiles;
+    os << "The score is...\n" << Tile::toChar(Tile::BLACK) << ": "
+        << blackTiles << '\n' << Tile::toChar(Tile::WHITE) << ": "
+        << whiteTiles << "\n\n";
+
+    // Winner message
+    if (blackTiles > whiteTiles) {
+        os << Tile::toChar(Tile::BLACK) << " wins!" << endl;
+    }
+    else if (whiteTiles > blackTiles) {
+        os << Tile::toChar(Tile::WHITE) << " wins!" << endl;
+    }
+    else {
+        os << "Tie game!" << endl;
+    }
 }
 
 void Game::takeTurn() {
@@ -40,7 +60,7 @@ void Game::changePlayers() {
 
 // get position input 
 Position Game::getPositionInput() {
-    // variable
+    // variables
     string input;
     bool good = false;
     int row = -1, col = -1;
@@ -76,7 +96,7 @@ Position Game::getPositionInput() {
         }
     }
     os << '\n';
-    Position pos;// = { row, col };
+    Position pos; // = { row, col }; // Visual Studio didn't like this syntax
     pos.row = row;
     pos.col = col;
     return pos;   

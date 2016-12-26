@@ -46,5 +46,9 @@ public:
     
     // checks to see if any adjacent occupied tiles exists
     bool adjacentOccupiedTileExists(int r, int c);
+    bool checkOccupiedTile(int r, int c);
+
+    // Count tiles
+    int countTiles(int player);
 
 };

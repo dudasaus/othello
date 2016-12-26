@@ -171,11 +171,41 @@ bool Board::noOtherValidMoves(int r, int c, int player) {
     return true;
 }
 
-// TODO
+// See if there are any adjacent occupied tiles to r c
 bool Board::adjacentOccupiedTileExists(int r, int c) {
-    /*if (r + 1 < size) {
+    // Check all directions
+    return (
+        checkOccupiedTile(r, c + 1) ||
+        checkOccupiedTile(r + 1, c + 1) ||
+        checkOccupiedTile(r + 1, c) ||
+        checkOccupiedTile(r + 1, c - 1) ||
+        checkOccupiedTile(r, c - 1) ||
+        checkOccupiedTile(r - 1, c - 1) ||
+        checkOccupiedTile(r - 1, c) ||
+        checkOccupiedTile(r - 1, c + 1)
+    );
+}
 
+// Check if tile at r c is in bounds and occupied
+bool Board::checkOccupiedTile(int r, int c) {
+    // Make sure it's in bounds
+    if (r < 0 || r >= size || c < 0 || c >= size)
+        return false;
+    // Return true if it's not empty
+    return (!tiles[r][c].isEmpty());
+}
+
+// Count tiles for player
+int Board::countTiles(int player) {
+    
+    int result = 0;
+    
+    for (int r = 0; r < size; ++r) {
+        for (int c = 0; c < size; ++c) {
+            if (tiles[r][c].getOccupant() == player)
+                ++result;
+        }
     }
-    */
-    return true;
+
+    return result;
 }
