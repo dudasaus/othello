@@ -1,5 +1,8 @@
 // Austin Dudas
 
+#ifndef GAME_H
+#define GAME_H 
+
 #include "Board.h"
 
 using namespace std;
@@ -11,6 +14,7 @@ private:
     Board board;
     int currentPlayer;
     ostream& os = cout;
+    bool colors = true;
     
 public:
     // Constructor
@@ -35,3 +39,5 @@ struct Position {
     int row = 0;
     int col = 0;
 };
+
+#endif

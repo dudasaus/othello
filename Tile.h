@@ -1,5 +1,8 @@
 // Austin Dudas
 
+#ifndef TILE_H
+#define TILE_H 
+
 #include <iostream>
 
 using namespace std;
@@ -10,6 +13,7 @@ public:
     
 private:
     int occupant;
+    bool colors = true;
     
 public:
     // Default constructor
@@ -25,6 +29,24 @@ public:
     static char toChar(int c) {
         const char tileReps[] = {'.', 'X', 'O'};
         return tileReps[c];
+    }
+    
+    // toString
+    string toString() {
+        if (colors) {
+            const string tileReps[] = {"EMPTY","BLACK","WHITE"};
+            return tileReps[occupant];
+        }
+        else 
+            return string(1, toChar());
+    }
+    static string toString(bool colors, int c) {
+        if (colors) {
+            const string tileReps[] = {"EMPTY","BLACK","WHITE"};
+            return tileReps[c];
+        }
+        else
+            return string(1, toChar(c));
     }
     
     // isEmpty()
@@ -46,6 +68,9 @@ public:
     void setOccupant(int inOccupant) {
         occupant = inOccupant;
     }
+    void setColors(bool inColors) {
+        colors = inColors;
+    }
 };
 
 inline ostream& operator<<(ostream& os, Tile& tile) {
@@ -56,7 +81,18 @@ inline ostream& operator<<(ostream& os, Tile& tile) {
         "\x1b[42m\x1b[97mO\x1b[0m"
     };
     
-    os << output[tile.getOccupant()];
+    const char outputColorless[] = {
+        '.',
+        'X',
+        'O'
+    };
+    
+    if (true)
+        os << output[tile.getOccupant()];
+    else
+        os << outputColorless[tile.getOccupant()];
     
     return os;
 }
+
+#endif

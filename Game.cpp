@@ -9,7 +9,7 @@ using namespace std;
 void Game::startGame() {
     // Start message
     os << "Starting a new game of Othello\n";
-    os << Tile::toChar(currentPlayer) << " goes first\n\n";
+    os << Tile::toString(colors, currentPlayer) << " goes first\n\n";
 
     // Play all the turns
     while (!board.isFull()) {
@@ -19,16 +19,16 @@ void Game::startGame() {
     // Get final scores 
     int blackTiles = board.countTiles(Tile::BLACK);
     int whiteTiles = board.getSize() - blackTiles;
-    os << "The score is...\n" << Tile::toChar(Tile::BLACK) << ": "
-        << blackTiles << '\n' << Tile::toChar(Tile::WHITE) << ": "
+    os << "The score is...\n" << Tile::toString(colors, Tile::BLACK) << ": "
+        << blackTiles << '\n' << Tile::toString(colors, Tile::WHITE) << ": "
         << whiteTiles << "\n\n";
 
     // Winner message
     if (blackTiles > whiteTiles) {
-        os << Tile::toChar(Tile::BLACK) << " wins!" << endl;
+        os << Tile::toString(colors, Tile::BLACK) << " wins!" << endl;
     }
     else if (whiteTiles > blackTiles) {
-        os << Tile::toChar(Tile::WHITE) << " wins!" << endl;
+        os << Tile::toString(colors, Tile::WHITE) << " wins!" << endl;
     }
     else {
         os << "Tie game!" << endl;
@@ -38,7 +38,7 @@ void Game::startGame() {
 void Game::takeTurn() {
     // Print the board
     board.printWithCoords(os);
-    os << '\n' << Tile::toChar(currentPlayer) 
+    os << '\n' << Tile::toString(colors, currentPlayer) 
     << "'s turn - Enter a position in [LETTER][NUMBER] format\n";
     // Get the input 
     Position pos = getPositionInput();
