@@ -5,11 +5,11 @@
 using namespace std;
 
 // Constructor
-Board::Board() : size(8) {
+Board::Board(bool colors) : size(8) {
     // Adjust board size
     tiles.resize(size);
     for (int i = 0; i < size; ++i) {
-        tiles[i].resize(size);
+        tiles[i].resize(size, Tile(colors));
     }
     
     // Set starter tiles 

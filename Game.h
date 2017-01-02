@@ -19,6 +19,7 @@ private:
 public:
     // Constructor
     Game() : currentPlayer(Tile::BLACK) {};
+    Game(bool inColors) : currentPlayer(Tile::BLACK), colors(inColors) {};
     
     // start game
     void startGame();

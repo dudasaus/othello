@@ -13,7 +13,8 @@ private:
     
 public:
     // Constructors
-    Board();
+    Board(bool colors);
+    Board() : Board(true) {};
     
     // Getters
     int getSize() {

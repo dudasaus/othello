@@ -13,13 +13,13 @@ public:
     
 private:
     int occupant;
-    bool colors = true;
+    bool colors;
     
 public:
     // Default constructor
-    Tile() : occupant(EMPTY) {};
+    Tile() : occupant(EMPTY), colors(true) {};
     // Another constructor 
-    Tile(int inOccupant) : occupant(inOccupant) {};
+    Tile(bool inColors) : occupant(EMPTY), colors(inColors) {};
     
     // toChar
     char toChar() {
