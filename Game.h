@@ -14,12 +14,14 @@ private:
     Board board;
     int currentPlayer;
     ostream& os = cout;
-    bool colors = true;
+    bool colors;
     
 public:
     // Constructor
-    Game() : currentPlayer(Tile::BLACK) {};
-    Game(bool inColors) : currentPlayer(Tile::BLACK), colors(inColors) {};
+    Game() : currentPlayer(Tile::BLACK), colors(true) {};
+    Game(bool inColors) : currentPlayer(Tile::BLACK), colors(inColors) {
+        board = Board(colors);
+    };
     
     // start game
     void startGame();

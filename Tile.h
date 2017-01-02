@@ -63,6 +63,9 @@ public:
     int getOccupant() {
         return occupant;
     }
+    bool getColors() {
+        return colors;
+    }
     
     // Setters
     void setOccupant(int inOccupant) {
@@ -87,7 +90,7 @@ inline ostream& operator<<(ostream& os, Tile& tile) {
         'O'
     };
     
-    if (true)
+    if (tile.getColors())
         os << output[tile.getOccupant()];
     else
         os << outputColorless[tile.getOccupant()];

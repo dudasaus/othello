@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char** argv) {
     
     // Welcome message
-    cout << "Welcome to Othello!\nUse the --nocolors option"
+    cout << "Welcome to Othello!\nUse the --nocolors option (or -n)"
          << " if the colored output isn't working.\n\n";
     
     // Colors variable
@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     // Arguments for getopt_long 
     int opt_index = 0;
     option long_options[] = {
-        {"nocolor", no_argument, 0, 'n'}
+        {"nocolors", no_argument, 0, 'n'}
     };
     
     // Get arguments from command line 
@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         long_options, &opt_index)) != -1) {
         
         switch (c) {
-            // --nocolor -n
+            // --nocolors -n
             case 'n':
             {
                 // turn off colors 
